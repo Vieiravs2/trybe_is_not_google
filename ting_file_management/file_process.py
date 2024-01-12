@@ -1,4 +1,5 @@
 from ting_file_management.file_management import txt_importer
+import sys
 
 
 def process(path_file, instance):
@@ -16,7 +17,13 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    """Aqui irá sua implementação"""
+    removed_item = instance.dequeue()
+
+    if removed_item:
+        path_file = removed_item["nome_do_arquivo"]
+        sys.stdout.write(f"Arquivo {path_file} removido com sucesso\n")
+    else:
+        sys.stdout.write("Não há elementos\n")
 
 
 def file_metadata(instance, position):
