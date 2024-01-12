@@ -12,16 +12,13 @@ class Queue(AbstractQueue):
         self.items.append(value)
 
     def dequeue(self):
-        if not self.is_empty():
-            return self.items.pop(0)
-
-        return None
+        return self.items.pop(0) if not self.is_empty() else None
 
     def search(self, index):
         if 0 <= index < len(self.items):
             return self.items[index]
-
-        raise IndexError("Índice Inválido ou Inexistente")
+        else:
+            raise IndexError("Índice Inválido ou Inexistente")
 
     def is_empty(self):
         return len(self.items) == 0
